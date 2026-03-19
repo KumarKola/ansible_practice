@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    name: install apache server on all nodes
+    apt:
+     name: apache2

@@ -5,7 +5,7 @@
     - name: install apache and httpd
       ansible.builtin.apt:
         name: apache2
-        state: present
+        state: absent
         update_cache: true
     - name: copy file to the given destination on all servers
       copy:

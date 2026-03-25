@@ -1,18 +1,7 @@
 ---
 - hosts: all
   become: true
-  tasks:
-    - name: install apache and httpd
-      ansible.builtin.apt:
-        name: apache2
-        state: present
-        update_cache: true
-    - name: copy file to the given destination on all servers
-      copy:
-        src: index.html
-        dest: ansible/html
-        owner: root
-        group: root
-        mode: '0644'
+  roles:
+    - Role1
 
 

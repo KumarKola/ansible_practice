@@ -10,7 +10,7 @@
     - name: copy file to the given destination on all servers
       copy:
         src: index.html
-        dest: /ansible/html
+        dest: ansible/html
         owner: root
         group: root
         mode: '0644'

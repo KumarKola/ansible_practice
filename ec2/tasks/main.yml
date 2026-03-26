@@ -1,26 +1,28 @@
 ---
 # tasks file for ec2
+#- name: start an instance with a public IP address
+#  amazon.aws.ec2_instance:
+#    name: "public-compute-instance"
+#    #        vpc_subnet_id: subnet-5ca1ab1e
+#    instance_type: t2.micro
+#    security_group: default
+#    region: us-east-1
+#    aws_access_key: "{ { aws_access_key } }"
+#    aws_secret_key: "{ { aws_secret_key } }"
+#    network:
+#      assign_public_ip: true
+#    image_id: ami-0ec10929233384c7f
+
 - name: start an instance with a public IP address
   amazon.aws.ec2_instance:
     name: "public-compute-instance"
-    #        vpc_subnet_id: subnet-5ca1ab1e
+    key_name: "dinesh_new.pem"
     instance_type: t2.micro
     security_group: default
     region: us-east-1
-    aws_access_key: "{ { aws_access_key } }"
-    aws_secret_key: "{ { aws_secret_key } }"
-    network:
-      assign_public_ip: true
+    network_interfaces:
+      - assign_public_ip: true
     image_id: ami-0ec10929233384c7f
-
-- name: Inspect vaulted credential shape
-  debug:
-    msg:
-      - "access key defined: {{ aws_access_key is defined }}"
-      - "secret key defined: {{ aws_secret_key is defined }}"
-      - "access key type: {{ aws_access_key | type_debug }}"
-      - "secret key type: {{ aws_secret_key | type_debug }}"
-      - "access key length: {{ aws_access_key | length }}"
-      - "secret key length: {{ aws_secret_key | length }}"
-
+    tags:
+      Environment: Testing
 

@@ -1,2 +1,3 @@
 ---
 # vars file for infra_provision
+type : "t2.micro"

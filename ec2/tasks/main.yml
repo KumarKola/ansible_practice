@@ -16,13 +16,12 @@
 - name: start an instance with a public IP address
   amazon.aws.ec2_instance:
     name: "public-compute-instance"
-    key_name: "dinesh_new.pem"
+    key_name: "dinesh_new"
     instance_type: t2.micro
     security_group: default
     region: us-east-1
     vpc_subnet_id: subnet-5ca1ab1e
-    aws_access_key: "{ { aws_access_key } }"
-    aws_secret_key: "{ { private_key } }"
+
     network:
       assign_public_ip: true
     image_id: ami-0ec10929233384c7f

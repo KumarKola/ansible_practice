@@ -1,9 +1,9 @@
 ---
 # tasks file for ec2_shutdown
-- name: gather inventory facts
-  debug:
-    var: ansible_facts
-#- name: shutdown Ec2 instances
-#  command: /sbin/shutdown -t now
-#  when:
-#    ansible_facts['os_family']== "Debian"
+#- name: gather inventory facts
+#  debug:
+#    var: ansible_facts
+- name: shutdown Ec2 instances
+  command: /sbin/shutdown -t now
+  when:
+    ansible_facts['os_family']== "Debian"

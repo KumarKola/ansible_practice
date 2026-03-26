@@ -3,7 +3,7 @@
     - name: start an instance with a public IP address
       amazon.aws.ec2_instance:
         name: "public-compute-instance"
-        vpc_subnet_id: subnet-5ca1ab1e
+#        vpc_subnet_id: subnet-5ca1ab1e
         instance_type: t2.micro
         security_group: default
         region: us-east-1

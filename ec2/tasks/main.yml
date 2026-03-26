@@ -7,9 +7,20 @@
     instance_type: t2.micro
     security_group: default
     region: us-east-1
-    aws_access_key: AKIASI7LSVTCOCZYL347
-    aws_secret_key: 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
-
+    aws_access_key: "{ { aws_access_key } }"
+    aws_secret_key: "{ { aws_secret_key } }"
     network:
       assign_public_ip: true
     image_id: ami-0ec10929233384c7f
+
+- name: Inspect vaulted credential shape
+  debug:
+    msg:
+      - "access key defined: {{ aws_access_key is defined }}"
+      - "secret key defined: {{ aws_secret_key is defined }}"
+      - "access key type: {{ aws_access_key | type_debug }}"
+      - "secret key type: {{ aws_secret_key | type_debug }}"
+      - "access key length: {{ aws_access_key | length }}"
+      - "secret key length: {{ aws_secret_key | length }}"
+
+

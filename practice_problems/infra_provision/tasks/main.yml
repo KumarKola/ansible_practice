@@ -1,2 +1,22 @@
 ---
-# tasks file for infra_provision
+# tasks file for ec2
+
+- name: Create 3 Ec2 instances of 1-linux and 2-ubuntu type
+  amazon.aws.ec2_instance:
+    name: "{{item.name}}"
+    key_name: "dinesh_new"
+    instance_type: "{{type}}"
+    security_group: default
+    region: us-east-1
+    aws_access_key: "{{ec2_access_key}}"  # From vault as defined
+    aws_secret_key: "{{ec2_secret_key}}"  # From vault as defined
+    network:
+      assign_public_ip: true
+    image_id: "{{item.image}}"
+    tags:
+      Environment: "{{item.name}}"
+    loop:
+      - { image: "ami-02dfbd4ff395f2a1b" , name: "Amazon-centos" }
+      - { image: "ami-0ec10929233384c7f" , name: "Amazon-Ubuntu1" }
+      - { image: "ami-0ec10929233384c7f" , name: "Amazon-Ubuntu2" }
+

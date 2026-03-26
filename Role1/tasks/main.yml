@@ -13,3 +13,8 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: remove file to the given destination on all servers
+  file:
+    path: ansible/html
+    state: absent

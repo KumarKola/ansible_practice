@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  connection: remote
+  tasks:
+    - ec2
+

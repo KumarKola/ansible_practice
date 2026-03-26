@@ -1,2 +1,14 @@
 ---
 # tasks file for ec2
+    - name: start an instance with a public IP address
+      amazon.aws.ec2_instance:
+        name: "public-compute-instance"
+        vpc_subnet_id: subnet-5ca1ab1e
+        instance_type: t2.micro
+        security_group: default
+        region: us-east-1
+        aws_access_key: "{ { ssh_key } }"
+        aws_secret_key: "{{ secret_key}}"
+        network_interfaces:
+          - assign_public_ip: true
+        image_id: ami-0ec10929233384c7f

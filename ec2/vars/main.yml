@@ -1,3 +1,0 @@
----
-# vars file for ec2
-private_key: ~/.ssh/dinesh_new.pem
